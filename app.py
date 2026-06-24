@@ -187,12 +187,21 @@ div[data-testid="stImage"] img {
 
 @st.cache_resource
 def load_pipeline():
+    @st.cache_resource
+def load_pipeline():
     from inference import MoodLensPipeline
+    import gdown
+
     ckpt = Path("checkpoints/best_model.pth")
     if not ckpt.exists():
-        return None
+        ckpt.parent.mkdir(parents=True, exist_ok=True)
+        with st.spinner("Downloading model weights (first run only)..."):
+            gdown.download(
+                "https://drive.google.com/uc?id=1VQGIxm3HfhS4GFwN5XtdT-EEaYa2lKQc",
+                str(ckpt),
+                quiet=False,
+            )
     return MoodLensPipeline(str(ckpt), device="cpu")
-
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
