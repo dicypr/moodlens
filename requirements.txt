@@ -1,7 +1,7 @@
-torch
-torchvision
-Pillow
-numpy
-opencv-python-headless
-plotly
-gdown
+torch==2.3.1
+   torchvision==0.18.1
+   Pillow==10.3.0
+   numpy==1.26.4
+   opencv-python-headless==4.9.0.80
+   plotly==5.22.0
+   gdown==5.2.0
